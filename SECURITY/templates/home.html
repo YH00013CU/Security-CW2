@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>57357 Hospital - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #ea6b11;
+            color: white;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        section {
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ea6b11;
+            color: white;
+        }
+        #hospital-logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        #login-tab {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px; /* Add margin to the right of each navigation link */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Use Flask's url_for to generate dynamic URL for the image -->
+        <img src="{{ url_for('static', filename='57357.png') }}" alt="57357 Hospital Logo" id="hospital-logo">
+        <h1>Welcome to 57357 Hospital</h1>
+    </header>
+    <nav>
+        <div>
+            <!-- Use Flask's url_for to generate dynamic URLs for navigation links -->
+            <a href="{{ url_for('home') }}">Home</a>
+
+            <a href="{{ url_for('about') }}">About</a>
+
+            <a href="{{ url_for('schedule') }}">Schedule</a>
+        </div>
+        <!-- Login Tab -->
+        <a href="{{ url_for('login') }}" id="login-tab">Logout</a>
+    </nav>
+    <section>
+        <h2>Welcome to Our Hospital</h2>
+        <p>This is the home page content.</p>
+    </section>
+    <footer>
+        &copy; 2023 57357 Hospital
+    </footer>
+    
+</body>
+</html>

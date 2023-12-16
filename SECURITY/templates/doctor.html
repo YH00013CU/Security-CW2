@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        section {
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img id="logo" src="{{ url_for('static', filename='57357.png') }}" alt="Logo">
+
+        <h1>Welcome, Doctor!</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('doctor') }}">Home</a>
+        <!-- Remove the Appointments and Patients links -->
+        <a href="{{ url_for('patients_information') }}">Patients Information</a>
+        <a href="{{ url_for('login') }}">Logout</a>
+        <!-- Add a link to the Schedule page -->
+    </nav>
+    <section>
+        <h2>Doctor's Dashboard</h2>
+        <p>This is the doctor page content. Only authorized users with the doctor access level can view and edit this information.</p>
+    </section>
+    <footer>
+        &copy; 2023 Doctor Page
+    </footer>
+
+    <script>
+        // Check access level before allowing access to the content
+        document.addEventListener("DOMContentLoaded", function() {
+            var userAccessLevel = "doctor"; // Replace with the actual user's access level
+
+            if (userAccessLevel !== "doctor") {
+                // Redirect to unauthorized page or display an error message
+                window.location.href = "unauthorized.html";
+            }
+            
+        });
+    </script>
+</body>
+</html>

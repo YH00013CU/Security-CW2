@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>57357 Hospital - About</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #ea6b11;
+            color: white;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between; /* Adjusted to spread items */
+            align-items: center; /* Center items vertically */
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        section {
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ea6b11;
+            color: white;
+        }
+        #hospital-logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        #login-tab {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='57357.png') }}" alt="57357 Hospital Logo" id="hospital-logo">
+        <h1>Welcome to 57357 Hospital</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <!-- Login Button -->
+        <a href="{{ url_for('login') }}" id="login-tab">Logout</a>
+    </nav>
+    <section>
+        <h2>About 57357 Hospital</h2>
+        <p>Children's Cancer Hospital Egypt, also known as 57357 hospital after the hospital's widely published bank account number for donations, is a hospital in Cairo specializing in children's cancer. With 320 beds, the building is the largest pediatric oncology hospital in the world.</p>
+        
+        <!-- Location, Facebook, and Contact Information -->
+        <p><strong>Location:</strong> <a href="https://g.co/kgs/mzayKS" target="_blank">57357 Hospital Google Search</a></p>
+        <p><strong>Contact:</strong> For inquiries, please call +20 2 57357</p>
+    </section>
+    <footer>
+        &copy; 2023 57357 Hospital
+    </footer>
+</body>
+</html>

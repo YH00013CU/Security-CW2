@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Schedule Page for medical appointments">
+    <meta name="keywords" content="schedule, medical, appointments, doctor">
+    <meta name="author" content="Your Name">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <title>Schedule Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: white;
+            color: black;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #ea6b11;
+            color: white;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        main {
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        td.editable {
+            cursor: pointer;
+        }
+        td.editable:hover {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ea6b11;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img id="logo" src="{{ url_for('static', filename='57357.png') }}" alt="Hospital Logo">
+        <h1>Schedule Page</h1>
+    </header>
+
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('schedule') }}">Schedule</a>
+    </nav>
+
+    <main>
+        <h2>Schedule</h2>
+        <table id="scheduleTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Patient Name</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Add dynamic schedule data here -->
+                <tr>
+                    <td class="editable" contenteditable="true">2023-01-01</td>
+                    <td class="editable" contenteditable="true">John Doe</td>
+                    <td class="editable" contenteditable="true">10:00 AM</td>
+                </tr>
+                <!-- Add more rows as needed -->
+                <tr>
+                    <td class="editable" contenteditable="true">2023-01-02</td>
+                    <td class="editable" contenteditable="true">Jane Smith</td>
+                    <td class="editable" contenteditable="true">02:30 PM</td>
+                </tr>
+                <tr>
+                    <td class="editable" contenteditable="true">2023-01-03</td>
+                    <td class="editable" contenteditable="true">Bob Johnson</td>
+                    <td class="editable" contenteditable="true">09:15 AM</td>
+                </tr>
+                <tr>
+                    <td class="editable" contenteditable="true">2023-01-04</td>
+                    <td class="editable" contenteditable="true">Alice Williams</td>
+                    <td class="editable" contenteditable="true">01:45 PM</td>
+                </tr>
+                <tr>
+                    <td class="editable" contenteditable="true">2023-01-05</td>
+                    <td class="editable" contenteditable="true">Charlie Brown</td>
+                    <td class="editable" contenteditable="true">03:30 PM</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        &copy; 2023 Schedule Page
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Your existing JavaScript code
+
+            // Check if the user has editing access
+            if (userAccessLevel !== "57357_doctor" || getQueryParam('fromHome') !== 'true') {
+                disableEditing();
+            }
+
+            // Function to disable editing for non-doctor users
+            function disableEditing() {
+                var editableCells = document.querySelectorAll('.editable');
+                editableCells.forEach(function(cell) {
+                    cell.contentEditable = false;
+                    cell.classList.remove('editable');
+                });
+            }
+        });
+
+        // Function to add a new row to the table
+        function addRow() {
+            if (userAccessLevel === "57357_doctor") {
+                var table = document.getElementById("scheduleTable").getElementsByTagName('tbody')[0];
+                var newRow = table.insertRow(table.rows.length);
+
+                // Add cells to the new row
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+
+                // Set contenteditable and class for editing
+                cell1.contentEditable = true;
+                cell2.contentEditable = true;
+                cell3.contentEditable = true;
+
+                cell1.className = "editable";
+                cell2.className = "editable";
+                cell3.className = "editable";
+            }
+        }
+    </script>
+
+</body>
+</html>
